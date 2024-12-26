@@ -32,19 +32,19 @@ public class EditSachServlet extends HttpServlet {
 		String tacGiaID = request.getParameter("tacGiaID");
 		String theLoaiID = request.getParameter("theLoaiID");
 		String sql = "UPDATE Sach SET TenSach = ?, TacGiaID = ?, TheLoaiID = ? WHERE MaSach = ? ;" ;
-     try (Connection connection = DatabaseConnection.getConnection();
-          PreparedStatement st = connection.prepareStatement(sql)) {
-    	  st.setString(1, tenSach);
-    	  st.setString(2, tacGiaID);
-    	  st.setString(3, theLoaiID);
-    	  st.setString(4, maSach);
-          st.executeUpdate(); 
-    	  response.sendRedirect("HienThi.jsp");
-          }    
-     catch (Exception e) {
-    	 e.printStackTrace();
-    	 response.getWriter().println("Lỗi khi sửa sách: " + e.getMessage());
-     }
+		try (Connection connection = DatabaseConnection.getConnection();
+	         PreparedStatement st = connection.prepareStatement(sql)) {
+	    	 st.setString(1, tenSach);
+	    	 st.setString(2, tacGiaID);
+	    	 st.setString(3, theLoaiID);
+	    	 st.setString(4, maSach);
+	         st.executeUpdate(); 
+	    	 response.sendRedirect("HienThi.jsp");
+	         }    
+		catch (Exception e) {
+	    	 e.printStackTrace();
+	    	 response.getWriter().println("Lỗi khi sửa sách: " + e.getMessage());
+	    }
 	}
 
 }

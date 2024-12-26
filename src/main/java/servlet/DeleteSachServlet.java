@@ -27,16 +27,16 @@ public class DeleteSachServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 		String maSach = request.getParameter("maSach");
 		String sql = "DELETE FROM SACH WHERE MaSach = ? ";
-     try (Connection connection = DatabaseConnection.getConnection();
-          PreparedStatement st = connection.prepareStatement(sql)) {
-    	  st.setString(1, maSach);
-          st.executeUpdate(); 
-    	  response.sendRedirect("HienThi.jsp");
-          }    
-     catch (Exception e) {
-    	 e.printStackTrace();
-    	 response.getWriter().println("Lỗi khi xóa sách: " + e.getMessage());
-     }
+		try (Connection connection = DatabaseConnection.getConnection();
+	         PreparedStatement st = connection.prepareStatement(sql)) {
+	    	 st.setString(1, maSach);
+	         st.executeUpdate(); 
+	    	 response.sendRedirect("HienThi.jsp");
+	         }    
+		catch (Exception e) {
+			e.printStackTrace();
+			response.getWriter().println("Lỗi khi xóa sách: " + e.getMessage());
+		}
 	}
 
 }

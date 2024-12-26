@@ -26,15 +26,15 @@ public class AddTGServlet extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 		String tenTacGia = request.getParameter("tenTacGia");
 		String sql = "INSERT INTO TacGia (TenTacGia) VALUES (?)" ;
-     try (Connection connection = DatabaseConnection.getConnection();
-          PreparedStatement st = connection.prepareStatement(sql)) {
-    	  st.setString(1, tenTacGia);
-          st.executeUpdate(); 
-    	  response.sendRedirect("AddSach.jsp");
-          }    
-     catch (Exception e) {
-    	 e.printStackTrace();
-    	 response.getWriter().println("Lỗi khi thêm tác giả: " + e.getMessage());
-     }
+	    try (Connection connection = DatabaseConnection.getConnection();
+	         PreparedStatement st = connection.prepareStatement(sql)) {
+	    	 st.setString(1, tenTacGia);
+	         st.executeUpdate(); 
+	    	 response.sendRedirect("AddSach.jsp");
+	         }    
+	    catch (Exception e) {
+	    	 e.printStackTrace();
+	    	 response.getWriter().println("Lỗi khi thêm tác giả: " + e.getMessage());
+	    }
 	}
 }
